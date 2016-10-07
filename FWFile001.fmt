@@ -1,0 +1,18 @@
+# Line 1 in the data file is mandatory. WH at pos 0 on that line means "With Header". NH at pos 0 means "No Header".
+# No other values are to appear on Line 1
+# A line starting with a hash like this in the format/spec file means it is a comment only, and will be ignored by the processing.
+# There must be no blank lines in this spec file
+# File positions on a record start at offset 0.
+# This file is for say a list of friends... 
+# In the very next line, 0 means "the start position for this field/column", 4 means the length of the field, Id is the name of the field
+# In the Id field, if it is immediately followed by a square-bracketed, comma separated list of values, then those values are the allowed
+# set. All values should be assumed to be case-insensitive.
+The last line should contain no data/metadata
+# 1 record sample of a data file:
+#1   Jonathan   Oliver    joliver0@loc.gov                  Male  54.27.57.205        
+0,4,Id
+4,11,FirstName
+15,10,LastName
+25,34,Email
+59,6,Gender[Male,Female]
+65,20,IPAddress
