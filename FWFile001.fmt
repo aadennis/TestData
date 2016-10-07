@@ -1,5 +1,9 @@
 # Line 1 in the data file is mandatory. WH at pos 0 on that line means "With Header". NH at pos 0 means "No Header".
 # No other values are to appear on Line 1
+# Line 2 of the data file will either therefore be a header record (if WH) or a data record (if NH)
+# Line 3 and subsequent lines will always be data records
+# A file must contain at least 1 data record
+# Other assumptions: be aware there is no footer record - the last record must be a data record
 # A line starting with a hash like this in the format/spec file means it is a comment only, and will be ignored by the processing.
 # There must be no blank lines in this spec file
 # File positions on a record start at offset 0.
