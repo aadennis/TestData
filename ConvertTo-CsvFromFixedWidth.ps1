@@ -1,5 +1,6 @@
 <# 
 .Synopsis 
+    PRIVATE
     Given a single passed record, used the spec detail to work out the csv equivalent
     record to return.
 .Description
@@ -21,6 +22,7 @@ function Get-CsvRecord($columnCount, $record, $spec) {
 
 <# 
 .Synopsis 
+    PUBLIC
     Given a fixed width data file, and a json spec containing the formatting rules,
     output a CSV version of the file. 
     It is assumed right now that the data starts at line 3
@@ -47,7 +49,7 @@ function ConvertTo-CsvFromFixedWidth {
             $record = $_
             $outputRecords += Get-CsvRecord -columnCount $noOfColumns -record $record -spec $spec
         }
-        $outputRecords.Count
+        Write-Verbose "Count of records created: [$($outputRecords.Count)]"
 	}
 	End {
         $outputFile = [System.IO.Path]::GetTempFileName()
