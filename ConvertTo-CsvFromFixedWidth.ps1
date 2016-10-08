@@ -20,6 +20,12 @@ function Get-CsvRecord($columnCount, $record, $spec) {
      return $outputRecord
 }
 
+# PRIVATE
+function ConvertTo-ObjectFromJson($filePath) {
+    $temp = Get-Content -Raw $filePath
+    return  $temp | ConvertFrom-Json
+}
+
 <# 
 .Synopsis 
     PUBLIC
@@ -38,8 +44,8 @@ function ConvertTo-CsvFromFixedWidth {
 	$fixedWidthDataFile
 	)
 	Begin {
-        $specAsJson = Get-Content -Raw $fixedWidthSpecFile
-        $spec = $specAsJson | ConvertFrom-Json
+        # Mock Get-Process{}
+        $spec = ConvertTo-ObjectFromJson $fixedWidthSpecFile
         $noOfColumns = $spec.FriendsSpec.Fields.Count
         $outputRecords = @()
     }
