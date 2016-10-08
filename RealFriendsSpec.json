@@ -1,0 +1,16 @@
+{
+    "FriendsSpec": {
+        "Fields": [
+            {
+                "pos": "0",
+                "length": "4",
+                "name": "Id"
+            },
+            {
+                "pos": "4",
+                "length": "11",
+                "name": "FirstName"
+            }
+        ]
+    }
+}
