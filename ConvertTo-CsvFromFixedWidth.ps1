@@ -41,7 +41,9 @@ function ConvertTo-CsvFromFixedWidth {
     [string][Parameter(mandatory)]
 	$fixedWidthSpecFile,
     [string][Parameter(mandatory)]
-	$fixedWidthDataFile
+	$fixedWidthDataFile,
+    [string][Parameter(mandatory)]
+	$outputFile
 	)
 	Begin {
         # Mock Get-Process{}
@@ -58,12 +60,26 @@ function ConvertTo-CsvFromFixedWidth {
         Write-Verbose "Count of records created: [$($outputRecords.Count)]"
 	}
 	End {
-        $outputFile = [System.IO.Path]::GetTempFileName()
+        
         $outputRecords | Out-File $outputFile
         Write-Verbose "Output csv is: [$outputFile]"
 	}
 }
 
-#Execution
-ConvertTo-CsvFromFixedWidth -fixedWidthSpecFile ".\RealFriendsSpec.json" -fixedWidthDataFile ".\FWFile001.txt" -Verbose
+# the test files are taken from here [https://github.com/aadennis/TestData]
+Describe "Data file format conversion tests" {
+    It "converts a set of records from fixed width to csv" {
+        $tempFile = [System.IO.Path]::GetTempFileName()
+        ConvertTo-CsvFromFixedWidth -fixedWidthSpecFile ".\RealFriendsSpec.json" -fixedWidthDataFile ".\FWFile001.txt" -outputFile $tempFile
+        $csvRecordSet = Get-Content -Path $tempFile
+        $csvRecordSet.Length | Should be 1000
+        $csvRecordSet[0].Length | Should be 53
+        $csvRecordSet[333] | Should be "334,Marie,Gray,mgray99@godaddy.com,Female,193.122.103.129,"
+    }
+}
+
+
+
+
+
 
