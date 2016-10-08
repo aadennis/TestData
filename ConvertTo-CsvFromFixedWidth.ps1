@@ -42,3 +42,6 @@ function ConvertTo-CsvFromFixedWidth {
 	}
 }
 
+#Execution
+ConvertTo-CsvFromFixedWidth -fixedWidthSpecFile ".\RealFriendsSpec.json" -fixedWidthDataFile ".\FWFile001.txt" -Verbose
+
