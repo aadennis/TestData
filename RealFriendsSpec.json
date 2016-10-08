@@ -10,6 +10,26 @@
                 "pos": "4",
                 "length": "11",
                 "name": "FirstName"
+            },
+			  {
+                "pos": "15",
+                "length": "10",
+                "name": "LastName"
+            },
+			  {
+                "pos": "25",
+                "length": "34",
+                "name": "Email"
+            },
+			{
+                "pos": "59",
+                "length": "6",
+                "name": "Gender"
+            },
+			{
+                "pos": "65",
+                "length": "20",
+                "name": "IPAddress"
             }
         ]
     }
